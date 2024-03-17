@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:scan_image/constants.dart';
 import 'package:scan_image/core/utils/classes/app_routes.dart';
-import 'package:scan_image/core/utils/functions/service_locator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CustomButton extends StatelessWidget {
@@ -17,7 +16,9 @@ class CustomButton extends StatelessWidget {
           minimumSize: const Size(100, 50),
         ),
         onPressed: () async {
-          getIt.get<SharedPreferences>().setBool('isStarted', true);
+          SharedPreferences sharedPreferences =
+              await SharedPreferences.getInstance();
+          sharedPreferences.setBool('isStarted', true);
           GoRouter.of(context).push(AppRouter.kHomePage);
         },
         child: const Text(

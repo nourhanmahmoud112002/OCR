@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scan_image/constants.dart';
+import 'package:scan_image/features/onboarding/presentation/views/widgets/animated_header_text.dart';
 import 'package:scan_image/features/onboarding/presentation/views/widgets/custom_button.dart';
 
 class OnBoardingBody extends StatelessWidget {
@@ -19,11 +20,7 @@ class OnBoardingBody extends StatelessWidget {
       const SizedBox(
         height: 32,
       ),
-      const Text(
-        textAlign: TextAlign.center,
-        onboarding1,
-        style: TextStyle(fontSize: 28, fontWeight: FontWeight.w500),
-      ),
+      const AnimatedHeaderText(),
       const SizedBox(
         height: 5,
       ),
