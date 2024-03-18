@@ -1,8 +1,10 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:scan_image/constants.dart';
+import 'package:scan_image/core/utils/functions/show_image_picker_options.dart';
 import 'package:scan_image/core/utils/functions/show_quick_alert.dart';
 import 'package:scan_image/features/home/presentation/manager/cubits/ocr_cubit/ocr_cubit.dart';
 import 'package:scan_image/features/home/presentation/views/widgets/defualt_image.dart';
@@ -55,7 +57,7 @@ class _HomeBodyState extends State<HomeBody> {
             ),
             child: ListView(
               children: [
-                pickedImage1 == null
+                pickedImage1 == null || pickedImage1!.path == ''
                     ? const DefualtImage()
                     : ViewPickedImage(
                         pickedImage: pickedImage1!,
@@ -72,18 +74,17 @@ class _HomeBodyState extends State<HomeBody> {
                     ),
                     onPressed: () async {
                       setState(() {
-                        // extractedText = '';
+                        extractedText = '';
                         scanning = true;
                       });
-                      BlocProvider.of<OcrCubit>(context).pickImage();
+
+                      await showImagePickerOptions(context: context);
+
                       setState(() {
                         pickedImage1 =
                             BlocProvider.of<OcrCubit>(context).pickedImage;
                         extractedText =
                             BlocProvider.of<OcrCubit>(context).extractedText;
-                      });
-
-                      setState(() {
                         scanning = false;
                       });
                     },
