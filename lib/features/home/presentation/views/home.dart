@@ -12,23 +12,18 @@ class HomePage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: const HomeBody(),
-        floatingActionButton: IconButton(
+        floatingActionButton: FloatingActionButton(
           onPressed: () => BlocProvider.of<OcrCubit>(context)
               .copyExtractedTextToClipboard(context: context),
-          icon: Container(
-            width: 60,
-            height: 60,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: kPrimaryColor,
-            ),
-            child: const Icon(
-              Icons.copy,
-              size: 30,
-              color: Colors.white,
-            ),
+          backgroundColor: kPrimaryColor,
+          shape: const CircleBorder(),
+          child: const Icon(
+            Icons.copy,
+            size: 30,
+            color: Colors.white,
           ),
         ),
+        // floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       ),
     );
   }
