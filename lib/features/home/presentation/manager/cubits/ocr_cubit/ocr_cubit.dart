@@ -14,7 +14,7 @@ part 'ocr_state.dart';
 class OcrCubit extends Cubit<OcrState> {
   OcrCubit() : super(PickImageInitial());
 
-  File? pickedImage = File('');
+  File? pickedImage;
   String extractedText = '';
   bool isStarted = false;
   Future<void> pickImageFromGallary({required BuildContext context}) async {
@@ -27,7 +27,9 @@ class OcrCubit extends Cubit<OcrState> {
 
       pickedImage = File(image!.path);
       emit(PickImageSuccess(pickedImage: pickedImage!));
+
       GoRouter.of(context).pop();
+
       imagePickerAndTextExtractor(pickedImage: pickedImage!);
     } catch (e) {
       emit(PickImageFailure(errorMessage: e.toString()));
@@ -52,7 +54,7 @@ class OcrCubit extends Cubit<OcrState> {
   }
 
   Future<void> imagePickerAndTextExtractor({required File pickedImage}) async {
-    extractedText = '';
+    //extractedText = '';
     emit(ExtractedTextLoading());
     try {
       extractedText = await FlutterTesseractOcr.extractText(pickedImage.path,

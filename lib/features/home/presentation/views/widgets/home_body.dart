@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:scan_image/constants.dart';
 import 'package:scan_image/core/utils/functions/show_image_picker_options.dart';
@@ -47,6 +46,8 @@ class _HomeBodyState extends State<HomeBody> {
               message: state.errorMessage,
               type: QuickAlertType.error,
               color: Colors.red);
+        } else if (state is ExtractedTextLoading) {
+          extractedText = '';
         }
       },
       builder: (context, state) {
@@ -57,7 +58,7 @@ class _HomeBodyState extends State<HomeBody> {
             ),
             child: ListView(
               children: [
-                pickedImage1 == null || pickedImage1!.path == ''
+                pickedImage1 == null
                     ? const DefualtImage()
                     : ViewPickedImage(
                         pickedImage: pickedImage1!,

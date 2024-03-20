@@ -5,13 +5,18 @@ class ViewExtractedText extends StatelessWidget {
   final String extractedText;
   @override
   Widget build(BuildContext context) {
-    return Text(
-      textAlign: TextAlign.center,
-      extractedText,
-      style: const TextStyle(
-        fontSize: 28,
-        fontStyle: FontStyle.italic,
-      ),
-    );
+    return TweenAnimationBuilder(
+        tween: Tween<double>(begin: 13, end: 28),
+        duration: const Duration(seconds: 1),
+        builder: (context, value, child) {
+          return Text(
+            textAlign: TextAlign.center,
+            extractedText,
+            style: TextStyle(
+              fontSize: value,
+              fontStyle: FontStyle.italic,
+            ),
+          );
+        });
   }
 }
