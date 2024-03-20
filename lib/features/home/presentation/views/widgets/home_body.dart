@@ -86,6 +86,7 @@ class _HomeBodyState extends State<HomeBody> {
                             BlocProvider.of<OcrCubit>(context).pickedImage;
                         extractedText =
                             BlocProvider.of<OcrCubit>(context).extractedText;
+
                         scanning = false;
                       });
                     },

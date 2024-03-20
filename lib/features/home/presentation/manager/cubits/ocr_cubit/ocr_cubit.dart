@@ -62,6 +62,7 @@ class OcrCubit extends Cubit<OcrState> {
       if (extractedText == '') {
         extractedText = 'No text found';
       }
+
       emit(ExtractedTextSuccess(extractedText: extractedText));
     } catch (e) {
       extractedText = 'Error extracting text';

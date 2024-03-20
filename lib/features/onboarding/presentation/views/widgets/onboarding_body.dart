@@ -8,33 +8,36 @@ class OnBoardingBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(children: [
-      const SizedBox(
-        height: 32,
-      ),
-      Image.asset(
-        height: 250,
-        width: 250,
-        'assets/images/Image_folder.png',
-      ),
-      const SizedBox(
-        height: 32,
-      ),
-      const AnimatedHeaderText(),
-      const SizedBox(
-        height: 5,
-      ),
-      const Text(
-        textAlign: TextAlign.center,
-        onboarding2,
-        style: TextStyle(
-          fontSize: 16,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+      child: ListView(children: [
+        const SizedBox(
+          height: 32,
         ),
-      ),
-      const SizedBox(
-        height: 50,
-      ),
-      const CustomButton(),
-    ]);
+        Image.asset(
+          height: 250,
+          width: 250,
+          'assets/images/Image_folder.png',
+        ),
+        const SizedBox(
+          height: 32,
+        ),
+        const AnimatedHeaderText(),
+        const SizedBox(
+          height: 5,
+        ),
+        const Text(
+          textAlign: TextAlign.center,
+          onboarding2,
+          style: TextStyle(
+            fontSize: 16,
+          ),
+        ),
+        const SizedBox(
+          height: 50,
+        ),
+        const CustomButton(),
+      ]),
+    );
   }
 }
